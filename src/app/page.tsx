@@ -35,9 +35,8 @@ export default function Home() {
     <div className={`min-h-screen p-4 ${isDarkMode ? 'dark bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'}`}>
       <Image src="/images/Logo.png" alt="Puxa-Time" width={200} height={200} className='mx-auto' />
       <h1 className="text-3xl font-bold flex-col flex text-center mb-6">Puxa-Time</h1>
-      <p className='antialiased'>Este é um site para dividir jogadores em times de forma aleatória.</p>
-      
-      <div className="max-w-md mx-auto">
+      <p className='antialiased text-center text-zinc-200'>Este é um site para dividir jogadores em times de forma aleatória.</p>
+      <div className="max-w-md mx-auto mt-5">
         <ThemeToggle isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
         <PlayerForm
           players={players}

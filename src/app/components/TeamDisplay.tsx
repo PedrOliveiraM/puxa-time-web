@@ -19,11 +19,10 @@ export default function TeamDisplay({ teams, captains, onSelectCaptain }: TeamDi
                 <span>{player}</span>
                 <Button
                   onClick={() => onSelectCaptain(teamIndex, player)}
-                  className={`text-sm ${
-                    captains[teamIndex] === player
+                  className={`text-sm m-1 ${captains[teamIndex] === player
                       ? 'bg-accent-light dark:bg-accent-dark'
                       : 'bg-secondary-light dark:bg-secondary-dark'
-                  }`}
+                    }`}
                 >
                   {captains[teamIndex] === player ? 'Capitão' : 'Selecionar Capitão'}
                 </Button>

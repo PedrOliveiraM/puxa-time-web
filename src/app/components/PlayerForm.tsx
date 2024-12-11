@@ -1,3 +1,4 @@
+'use client'
 import { useState } from 'react'
 import Button from './Button'
 
@@ -22,10 +23,22 @@ export default function PlayerForm({
 }: PlayerFormProps) {
   const [playerInput, setPlayerInput] = useState('')
 
-  const handleAddPlayer = () => {
+  const handleSetPlayersFromList = (playerList: string): void => {
+    const validPlayers = playerList
+      .split('\n')
+      .map((line: string) => {
+        const player = line.replace(/^\d+\s*[-]?\s*/, '').trim()
+        return player || null
+      })
+      .filter((player: string | null): player is string => player !== null)
+    setPlayers(validPlayers)
+    console.log('Lista de jogadores:', validPlayers)
+  }
+
+  const handleAddPlayer = (): void => {
     if (playerInput.trim()) {
-      setPlayers([...players, playerInput.trim()])
-      setPlayerInput('')
+      handleSetPlayersFromList(playerInput)
+      setPlayerInput('') // Limpa o input após adicionar os jogadores
     }
   }
 
@@ -36,13 +49,12 @@ export default function PlayerForm({
           Adicionar Jogador
         </label>
         <div className="flex">
-          <input
-            type="text"
+          <textarea
             id="players"
             value={playerInput}
             onChange={(e) => setPlayerInput(e.target.value)}
             className="flex-grow px-3 py-2 border rounded-l-md dark:bg-gray-700 dark:border-gray-600"
-            placeholder="Nome do jogador"
+            placeholder="Lista de jogadores"
           />
           <Button onClick={handleAddPlayer} className="rounded-l-none">
             Adicionar
@@ -89,4 +101,3 @@ export default function PlayerForm({
     </div>
   )
 }
-
