@@ -22,8 +22,9 @@ export default function PlayerForm({
   onGenerateTeams,
 }: PlayerFormProps) {
   const [playerInput, setPlayerInput] = useState('')
+  console.log("PLAYERS", players)
 
-  const handleSetPlayersFromList = (playerList: string): void => {
+  const handleSetPlayersFromList = (playerList: string) => {
     const validPlayers = playerList
       .split('\n')
       .map((line: string) => {
@@ -31,14 +32,15 @@ export default function PlayerForm({
         return player || null
       })
       .filter((player: string | null): player is string => player !== null)
-    setPlayers(validPlayers)
-    console.log('Lista de jogadores:', validPlayers)
+
+    return validPlayers
   }
 
   const handleAddPlayer = (): void => {
     if (playerInput.trim()) {
-      handleSetPlayersFromList(playerInput)
-      setPlayerInput('') // Limpa o input após adicionar os jogadores
+      const playersArray = handleSetPlayersFromList(playerInput)
+      setPlayerInput('')
+      setPlayers(playersArray)
     }
   }
 
@@ -53,12 +55,10 @@ export default function PlayerForm({
             id="players"
             value={playerInput}
             onChange={(e) => setPlayerInput(e.target.value)}
-            className="flex-grow px-3 py-2 border rounded-l-md dark:bg-gray-700 dark:border-gray-600"
+            className="flex-grow px-3 py-2 border rounded-l-md dark:bg-gray-700 dark:border-gray-600 text-black"
             placeholder="Lista de jogadores"
           />
-          <Button onClick={handleAddPlayer} className="rounded-l-none">
-            Adicionar
-          </Button>
+
         </div>
       </div>
       <div>
@@ -70,7 +70,7 @@ export default function PlayerForm({
           id="numTeams"
           value={numTeams}
           onChange={(e) => setNumTeams(Number(e.target.value))}
-          className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600"
+          className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 text-black"
           min="2"
         />
       </div>
@@ -83,20 +83,14 @@ export default function PlayerForm({
           id="playersPerTeam"
           value={playersPerTeam}
           onChange={(e) => setPlayersPerTeam(Number(e.target.value))}
-          className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600"
+          className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 text-black"
           min="1"
         />
       </div>
-      <div>
-        <h3 className="text-sm font-medium mb-1">Jogadores Adicionados:</h3>
-        <ul className="list-disc list-inside">
-          {players.map((player, index) => (
-            <li key={index}>{player}</li>
-          ))}
-        </ul>
-      </div>
-      <Button onClick={onGenerateTeams} className="w-full">
-        Gerar Times
+
+      <Button onClick={handleAddPlayer} className={`rounded w-full ${playerInput.trim().length <= 0 ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
+        : 'bg-blue-500 text-white hover:bg-blue-600'}`} >
+        Adicionar
       </Button>
     </div>
   )
