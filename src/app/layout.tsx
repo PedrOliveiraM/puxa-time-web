@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: "Seu app de sorteios de time de futebol",
   icons: {
     icon: "/images/Logo.png",
-  }
+  },
 };
 
 export default function RootLayout({

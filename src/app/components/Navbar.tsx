@@ -1,13 +1,13 @@
-import { Menu } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "./ui/button"
+import { Menu } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "./ui/button";
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
+    <nav className="fixed left-0 right-0 top-0 z-50 bg-transparent backdrop-blur-sm">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex h-16 items-center justify-between">
           <div className="flex items-center space-x-2">
             <Image
               src="/images/Logo.png"
@@ -16,33 +16,47 @@ export default function Navbar() {
               height={40}
               className="rounded-full"
             />
-            <span className="text-white font-bold text-xl">PUXA TIME</span>
+            <span className="text-xl font-bold text-white">PUXA TIME</span>
           </div>
 
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="#features" className="text-white hover:text-puxa-orange transition-colors">
+          <div className="hidden items-center space-x-8 md:flex">
+            <Link
+              href="#features"
+              className="text-white transition-colors hover:text-puxa-orange"
+            >
               Modos
             </Link>
-            <Link href="#screenshots" className="text-white hover:text-puxa-orange transition-colors">
+            <Link
+              href="#screenshots"
+              className="text-white transition-colors hover:text-puxa-orange"
+            >
               Screenshots
             </Link>
-            <Link href="#pricing" className="text-white hover:text-puxa-orange transition-colors">
+            <Link
+              href="#pricing"
+              className="text-white transition-colors hover:text-puxa-orange"
+            >
               Planos
             </Link>
-            <Link href="/privacy" className="text-white hover:text-puxa-orange transition-colors">
+            <Link
+              href="/privacy"
+              className="text-white transition-colors hover:text-puxa-orange"
+            >
               Termos de Privacidade
             </Link>
-            <Button variant="secondary" className="bg-puxa-orange text-white hover:bg-puxa-orange/90">
+            <Button
+              variant="secondary"
+              className="bg-puxa-orange text-white hover:bg-puxa-orange/90"
+            >
               Baixar Agora
             </Button>
           </div>
 
-          <button className="md:hidden text-white">
+          <button className="text-white md:hidden">
             <Menu className="h-6 w-6" />
           </button>
         </div>
       </div>
     </nav>
-  )
+  );
 }
-

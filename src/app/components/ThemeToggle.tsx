@@ -1,18 +1,20 @@
-import { Moon, Sun } from 'lucide-react'
+import { Moon, Sun } from "lucide-react";
 
 interface ThemeToggleProps {
-  isDarkMode: boolean
-  setIsDarkMode: (isDark: boolean) => void
+  isDarkMode: boolean;
+  setIsDarkMode: (isDark: boolean) => void;
 }
 
-export default function ThemeToggle({ isDarkMode, setIsDarkMode }: ThemeToggleProps) {
+export default function ThemeToggle({
+  isDarkMode,
+  setIsDarkMode,
+}: ThemeToggleProps) {
   return (
     <button
       onClick={() => setIsDarkMode(!isDarkMode)}
-      className="fixed top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-800"
+      className="fixed right-4 top-4 rounded-full bg-gray-200 p-2 dark:bg-gray-800"
     >
-      {isDarkMode ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
+      {isDarkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
     </button>
-  )
+  );
 }
-

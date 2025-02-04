@@ -1,17 +1,24 @@
-import { Button } from "./ui/button"
+import { Button } from "./ui/button";
 
 export default function CTA() {
   return (
-    <section className="py-20 bg-puxa-orange text-puxa-white text-center relative overflow-hidden">
-      <div className="absolute inset-0 bg-stadium bg-cover bg-center opacity-5" />
-      <div className="container mx-auto px-4 relative">
-        <h2 className="text-3xl font-bold mb-4">Pronto para revolucionar a seleção da sua equipe?</h2>
-        <p className="text-xl mb-8">Baixe o Puxa Time agora e experimente a formação de equipes sem esforço!</p>
-        <Button size="lg" className="bg-puxa-white text-puxa-orange hover:bg-puxa-white/90 font-bold text-lg px-8 py-6">
+    <section className="relative overflow-hidden bg-puxa-orange py-20 text-center text-puxa-white">
+      <div className="bg-stadium absolute inset-0 bg-cover bg-center opacity-5" />
+      <div className="container relative mx-auto px-4">
+        <h2 className="mb-4 text-3xl font-bold">
+          Pronto para revolucionar a seleção da sua equipe?
+        </h2>
+        <p className="mb-8 text-xl">
+          Baixe o Puxa Time agora e experimente a formação de equipes sem
+          esforço!
+        </p>
+        <Button
+          size="lg"
+          className="bg-puxa-white px-8 py-6 text-lg font-bold text-puxa-orange hover:bg-puxa-white/90"
+        >
           Vamos Puxa Time
         </Button>
       </div>
     </section>
-  )
+  );
 }
-
