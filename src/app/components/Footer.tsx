@@ -70,12 +70,27 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-        </div>
-        <div className="mt-12 border-t border-white/10 pt-8 text-center text-white/60">
-          <p>
-            &copy; {new Date().getFullYear()} Puxa Time. Todos os direitos
-            reservados.
-          </p>
+
+          <div>
+            <h3 className="mb-4 text-lg font-bold text-white">Contato</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href="/terms"
+                  className="transition-colors hover:text-puxa-orange"
+                >
+                  pedro.oliveira@monteirodev.com
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="mt-12 border-t border-white/10 pt-8 text-center text-white/60">
+            <p>
+              &copy; {new Date().getFullYear()} Puxa Time. Todos os direitos
+              reservados.
+            </p>
+          </div>
         </div>
       </div>
     </footer>
